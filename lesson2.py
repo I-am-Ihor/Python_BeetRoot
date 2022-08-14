@@ -41,5 +41,21 @@
 
 
 
+people = input('Являетесь ли вы участником? Y or N: ')
+if people != 'Y' or people != 'N':
+    print('неверное значение')
+else:
+    total_hours = int(input('Кол-во часов: '))
+    if people == 'Y': 
+        total_cost = (2 * total_hours) * 1.1
+        print('Пользователь-участник пробыл', total_hours, 'часа за 2$/час плюс 10%, общая сумма составляет', total_cost)
+    elif people == 'N':
+        total_cost = (5 * total_hours) * 1.2
+        print('Пользователь-посетитель пробыл', total_hours, 'часа за 5$/час плюс 20%, общая сумма составляет', total_cost)
+
+
+
+
+
 
 
