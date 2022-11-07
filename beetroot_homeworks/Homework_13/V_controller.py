@@ -5,50 +5,50 @@ INDEX_TO_NAME = dict(enumerate(CHANNELS, start=1))
 class TVcontroller:
     carrent_index = 1
 
-    def __init__(self, INDEX_TO_NAME) -> None:
-        self.INDEX_TO_NAME = INDEX_TO_NAME
+    def __init__(self, *args) -> None:
+        self.controller = INDEX_TO_NAME
 
     def first_channel(self):
         """turns on the first channel from the list."""
 
-        return self.INDEX_TO_NAME[1]
+        return self.controller[1]
 
     def last_channel(self):
         """turns on the last channel from the list."""
 
-        return self.INDEX_TO_NAME[len(self.INDEX_TO_NAME)]
+        return self.controller[len(self.controller)]
 
     def turn_channel(self, num_channel):
         """turns on the N channel."""
 
-        k = self.INDEX_TO_NAME.get(num_channel)
+        k = self.controller.get(num_channel)
         if k == None:
             return "No such channel"
         else:
-            return self.INDEX_TO_NAME[num_channel]
+            return self.controller[num_channel]
 
     def next_channel(self):
         """turns on the next channel. If the current channel is the last one, turns on the first channel."""
 
-        if self.carrent_index == len(self.INDEX_TO_NAME):
+        if self.carrent_index == len(self.controller):
             self.carrent_index = 1
         else:
             self.carrent_index += 1
-        return self.INDEX_TO_NAME.get(self.carrent_index)
+        return self.controller.get(self.carrent_index)
 
     def previous_channel(self):
         """turns on the previous channel. If the current channel is the first one, turns on the last channel."""
 
         if self.carrent_index == 1:
-            self.carrent_index = len(self.INDEX_TO_NAME)
+            self.carrent_index = len(self.controller)
         else:
             self.carrent_index -= 1
-        return self.INDEX_TO_NAME.get(self.carrent_index)
+        return self.controller.get(self.carrent_index)
 
     def current_channel(self):
         """returns the name of the current channel."""
 
-        return self.INDEX_TO_NAME.get(self.carrent_index)
+        return self.controller.get(self.carrent_index)
 
     def is_exist(self, N):
 
@@ -59,8 +59,8 @@ class TVcontroller:
         else:
             return "NO"
         if N != 0:
-            if N in self.INDEX_TO_NAME:
-                return f"Yes, name this channel is {self.INDEX_TO_NAME.get(N)}"
+            if N in self.controller:
+                return f"Yes, name this channel is {self.controller.get(N)}"
             else:
                 return "NO"
 
